@@ -3,6 +3,9 @@ package com.liompei.app2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * 深入recyclerView二
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
