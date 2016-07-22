@@ -1,7 +1,7 @@
 package com.liompei.app2;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -26,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));  //必备
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);  //context,布局走向,是否反转
+        recyclerView.setLayoutManager(linearLayoutManager);  //必备
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, linearLayoutManager.getOrientation()));
         adapter = new RvAdapter(this, getData());
         recyclerView.setAdapter(adapter);  //必备
     }
