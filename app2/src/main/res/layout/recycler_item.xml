@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rec_linear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackground"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="#fff"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="2dp"
+    app:cardMaxElevation="4dp"
+    app:cardPreventCornerOverlap="true"
+    android:stateListAnimator="@animator/touch_item"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="5dp">
 
-    <TextView
-        android:id="@+id/textName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp" />
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

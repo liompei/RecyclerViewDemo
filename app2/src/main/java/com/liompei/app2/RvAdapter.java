@@ -29,9 +29,29 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.RvHolder> {
     }
 
     @Override
-    public void onBindViewHolder(RvHolder holder, int position) {
+    public void onBindViewHolder(final RvHolder holder, int position) {
         holder.textName.setText(mapList.get(position).get("name"));
         holder.textNum.setText(mapList.get(position).get("num"));
+
+        //如果设置了回调，则设置点击事件
+        if (onItemClickListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //点击事件
+                    onItemClickListener.onItemClick(holder.itemView, holder.getLayoutPosition(), holder.textName);
+                }
+            });
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    //长按事件
+                    onItemClickListener.onItemLongClick(holder.itemView, holder.getLayoutPosition());
+                    return false;
+                }
+            });
+        }
+
     }
 
 
@@ -47,12 +67,18 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.RvHolder> {
             super(itemView);
             textName = (TextView) itemView.findViewById(R.id.textName);
             textNum = (TextView) itemView.findViewById(R.id.textNum);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position, TextView textName);
+
+        void onItemLongClick(View view, int position);
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }
