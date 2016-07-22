@@ -47,6 +47,12 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.RvHolder> {
             super(itemView);
             textName = (TextView) itemView.findViewById(R.id.textName);
             textNum = (TextView) itemView.findViewById(R.id.textNum);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
     }
 }
